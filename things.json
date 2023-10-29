@@ -16,35 +16,5 @@
         "name": "Bagulete",
         "description": "Apenas um bagulete qualquer",
         "location": "Em um caixote na esquina"
-    },
-    {
-        "description": "Apenas um macaco",
-        "location": "No galho",
-        "name": "Orangotango",
-        "id": 4
-    },
-    {
-        "description": "Apenas um macaco",
-        "location": "No galho",
-        "name": "Orangotango",
-        "id": 5
-    },
-    {
-        "description": "Apenas um macaco",
-        "location": "No galho",
-        "name": "Orangotango",
-        "id": 6
-    },
-    {
-        "description": "Apenas um macaco",
-        "location": "No galho",
-        "name": "Orangotango",
-        "id": 7
-    },
-    {
-        "description": "Apenas um macaco",
-        "location": "No galho",
-        "name": "Orangotango",
-        "id": 8
     }
 ]
