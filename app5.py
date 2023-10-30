@@ -1,4 +1,4 @@
-# API RESTful JSON usando um gerador de Ids para o POST.
+# API RESTful JSON.
 
 from flask import Flask, jsonify, request, abort, make_response
 import json
