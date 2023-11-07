@@ -6,7 +6,7 @@ import jwt
 
 app = Flask(__name__)
 
-db = "things.json"
+db = "items.json"
 
 secret = "secret"
 
@@ -58,7 +58,7 @@ def login():
         return jsonify({"message": f"Erro ao abrir base de dados: {e}"}), 500
 
 
-@app.route("/things", methods=["GET"])
+@app.route("/items", methods=["GET"])
 def get_all():
 
     token = request.headers.get("Authorization")
@@ -76,59 +76,59 @@ def get_all():
         return jsonify({"message": "Token inválido."}), 401
 
     print(data)
-    things = db_open()
-    if (len(things) > 0):
-        return jsonify(things)
+    items = db_open()
+    if (len(items) > 0):
+        return jsonify(items)
     not_found()
 
 
-@app.route("/things/<int:id>", methods=["GET"])
+@app.route("/items/<int:id>", methods=["GET"])
 def get_one(id):
-    things = db_open()
-    for index, thing in enumerate(things):
-        if thing.get("id") == id:
-            return jsonify(thing)
+    items = db_open()
+    for index, item in enumerate(items):
+        if item.get("id") == id:
+            return jsonify(item)
     not_found()
 
 
-@app.route("/things", methods=["POST"])
+@app.route("/items", methods=["POST"])
 def new():
-    things = db_open()
-    all_ids = [reg["id"] for reg in things]
+    items = db_open()
+    all_ids = [reg["id"] for reg in items]
     if all_ids:
         next_id = max(all_ids) + 1
     else:
         next_id = 1
-    new_thing = request.get_json()
-    new_thing["id"] = next_id
-    things.append(new_thing)
-    if db_save(things):
-        return jsonify(new_thing), 201
+    new_item = request.get_json()
+    new_item["id"] = next_id
+    items.append(new_item)
+    if db_save(items):
+        return jsonify(new_item), 201
     else:
         return jsonify({"status": "error", "message": "Falha ao salvar dados"}), 500
 
 
-@app.route("/things/<int:id>", methods=["PUT", "PATCH"])
+@app.route("/items/<int:id>", methods=["PUT", "PATCH"])
 def edit(id):
-    things = db_open()
-    edited_thing = request.get_json()
-    for index, thing in enumerate(things):
-        if thing.get("id") == id:
-            things[index].update(edited_thing)
-            if db_save(things):
-                return jsonify(things[index])
+    items = db_open()
+    edited_item = request.get_json()
+    for index, item in enumerate(items):
+        if item.get("id") == id:
+            items[index].update(edited_item)
+            if db_save(items):
+                return jsonify(items[index])
             else:
                 return jsonify({"status": "error", "message": "Falha ao salvar dados"}), 500
     not_found()
 
 
-@app.route("/things/<int:id>", methods=["DELETE"])
+@app.route("/items/<int:id>", methods=["DELETE"])
 def delete(id):
-    things = db_open()
-    for index, thing in enumerate(things):
-        if thing.get("id") == id:
-            del (things[index])
-            if db_save(things):
+    items = db_open()
+    for index, item in enumerate(items):
+        if item.get("id") == id:
+            del (items[index])
+            if db_save(items):
                 return jsonify({"status": "success", "message": "Apagado com sucesso"})
             else:
                 return jsonify({"status": "error", "message": "Falha ao salvar dados"}), 500

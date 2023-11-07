@@ -5,7 +5,7 @@ import sqlite3
 import json
 
 # Conectar ao banco de dados
-conn = sqlite3.connect('things.db')
+conn = sqlite3.connect('items.db')
 
 # Definir a fábrica de linhas como dicionário
 conn.row_factory = sqlite3.Row
@@ -14,7 +14,7 @@ conn.row_factory = sqlite3.Row
 cursor = conn.cursor()
 
 # Consultar dados
-cursor.execute('SELECT * FROM things')
+cursor.execute('SELECT * FROM item')
 dados = cursor.fetchall()
 
 # Criar uma lista para armazenar os registros

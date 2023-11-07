@@ -7,57 +7,57 @@ app = Flask(__name__)
 
 
 def db_open():
-    with open('things.json', 'r', encoding='utf-8') as json_file:
+    with open('items.json', 'r', encoding='utf-8') as json_file:
         return json.load(json_file)
 
 
 def db_save(data):
-    with open('things.json', 'w', encoding='utf-8') as json_file:
+    with open('items.json', 'w', encoding='utf-8') as json_file:
         json.dump(data, json_file, ensure_ascii=False, indent=4)
 
 
-@app.route('/things', methods=['GET'])
+@app.route('/items', methods=['GET'])
 def get_all():
-    things = db_open()
-    return jsonify(things)
+    items = db_open()
+    return jsonify(items)
 
 
-@app.route('/things/<int:id>', methods=['GET'])
+@app.route('/items/<int:id>', methods=['GET'])
 def get_one(id):
-    things = db_open()
-    for thing in things:
-        if thing.get('id') == id:
-            return jsonify(thing)
+    items = db_open()
+    for item in items:
+        if item.get('id') == id:
+            return jsonify(item)
 
 
-@app.route('/things', methods=['POST'])
+@app.route('/items', methods=['POST'])
 def new():
-    things = db_open()
-    new_thing = request.get_json()
-    things.append(new_thing)
-    db_save(things)
-    return jsonify(things)
+    items = db_open()
+    new_item = request.get_json()
+    items.append(new_item)
+    db_save(items)
+    return jsonify(items)
 
 
-@app.route('/things/<int:id>', methods=['PUT', 'PATCH'])
+@app.route('/items/<int:id>', methods=['PUT', 'PATCH'])
 def edit(id):
-    things = db_open()
-    edited_thing = request.get_json()
-    for index, thing in enumerate(things):
-        if thing.get('id') == id:
-            things[index].update(edited_thing)
-            db_save(things)
-            return jsonify(things[index])
+    items = db_open()
+    edited_item = request.get_json()
+    for index, item in enumerate(items):
+        if item.get('id') == id:
+            items[index].update(edited_item)
+            db_save(items)
+            return jsonify(items[index])
 
 
-@app.route('/things/<int:id>', methods=['DELETE'])
+@app.route('/items/<int:id>', methods=['DELETE'])
 def delete(id):
-    things = db_open()
-    for index, thing in enumerate(things):
-        if thing.get('id') == id:
-            del (things[index])
-            db_save(things)
-            return jsonify(things)
+    items = db_open()
+    for index, item in enumerate(items):
+        if item.get('id') == id:
+            del (items[index])
+            db_save(items)
+            return jsonify(items)
 
 
 app.run(port=3000, host='localhost', debug=True)

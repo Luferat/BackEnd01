@@ -4,7 +4,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-things = [
+items = [
     {
         "id": 1,
         "name": "Bagulho",
@@ -26,40 +26,40 @@ things = [
 ]
 
 
-@app.route('/things', methods=['GET'])
+@app.route('/items', methods=['GET'])
 def get_all():
-    return jsonify(things)
+    return jsonify(items)
 
 
-@app.route('/things/<int:id>', methods=['GET'])
+@app.route('/items/<int:id>', methods=['GET'])
 def get_one(id):
-    for thing in things:
-        if thing.get('id') == id:
-            return jsonify(thing)
+    for item in items:
+        if item.get('id') == id:
+            return jsonify(item)
 
 
-@app.route('/things', methods=['POST'])
+@app.route('/items', methods=['POST'])
 def new():
-    new_thing = request.get_json()
-    things.append(new_thing)
-    return jsonify(things)
+    new_item = request.get_json()
+    items.append(new_item)
+    return jsonify(items)
 
 
-@app.route('/things/<int:id>', methods=['PUT', 'PATCH'])
+@app.route('/items/<int:id>', methods=['PUT', 'PATCH'])
 def edit(id):
-    edited_thing = request.get_json()
-    for index, thing in enumerate(things):
-        if thing.get('id') == id:
-            things[index].update(edited_thing)
-            return jsonify(things[index])
+    edited_item = request.get_json()
+    for index, item in enumerate(items):
+        if item.get('id') == id:
+            items[index].update(edited_item)
+            return jsonify(items[index])
 
 
-@app.route('/things/<int:id>', methods=['DELETE'])
+@app.route('/items/<int:id>', methods=['DELETE'])
 def delete(id):
-    for index, thing in enumerate(things):
-        if thing.get('id') == id:
-            del (things[index])
-            return jsonify(things)
+    for index, item in enumerate(items):
+        if item.get('id') == id:
+            del (items[index])
+            return jsonify(items)
 
 
 app.run(port=3000, host='localhost', debug=True)
