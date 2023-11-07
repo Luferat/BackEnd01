@@ -1,4 +1,4 @@
-# API REST JSON usando um arquivo de persistência e try:.
+# API REST JSON usando um arquivo de persistência e try/except.
 
 from flask import Flask, jsonify, request
 import json
@@ -13,7 +13,7 @@ def db_open():
         with open(db, 'r', encoding='utf-8') as json_file:
             return json.load(json_file)
     except Exception as e:
-        print(f"Erro ao abrir arquivo JSON: {e}")
+        print(f'Erro ao abrir arquivo JSON: {e}')
 
 
 def db_save(data):
@@ -21,7 +21,7 @@ def db_save(data):
         with open(db, 'w', encoding='utf-8') as json_file:
             json.dump(data, json_file, ensure_ascii=False, indent=4)
     except Exception as e:
-        print(f"Erro ao salvar arquivo JSON: {e}")
+        print(f'Erro ao salvar arquivo JSON: {e}')
 
 
 @app.route('/items', methods=['GET'])

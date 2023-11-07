@@ -41,6 +41,8 @@ def get_one(id):
 @app.route('/items', methods=['POST'])
 def new():
     new_item = request.get_json()
+    max_id = max(item['id'] for item in items)
+    new_item['id'] = max_id + 1
     items.append(new_item)
     return jsonify(items)
 
