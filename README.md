@@ -7,3 +7,8 @@ Diversos experimentos, principalmente com API em Python e Flesk.
  - Gerar lista de dependências → `pip freeze > packages.txt`
  - Obter localização das dependências → `python -m site --user-site`
  - Instalar todas as dependências → `pip install -r packages.txt`
+
+
+Vídeos:
+
+ - [Criar e publicar um Site com Flask](https://youtu.be/K2ejI4z8Mbg?si=E5gTWMDEVuHfnHfJ)

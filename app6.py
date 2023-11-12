@@ -135,4 +135,5 @@ def delete(id):
     not_found()
 
 
-app.run(port=3000, debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)

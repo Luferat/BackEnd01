@@ -1,5 +1,5 @@
 # API REST JSON usando uma coleção de dicionários.
- 
+
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
@@ -64,4 +64,5 @@ def delete(id):
             return jsonify(items)
 
 
-app.run(port=3000, host='localhost', debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
