@@ -12,6 +12,12 @@ Diversos experimentos, principalmente com API em Python e Flesk.
 ```
 web: gunicorn my_flask_app:app
 ```
+Para "rodar" o aplicativo:
+```python
+•••
+if __name__ == "__main__":
+    app.run(debug=True)
+```
 
 Vídeos:
 
