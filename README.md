@@ -12,3 +12,4 @@ Diversos experimentos, principalmente com API em Python e Flesk.
 Vídeos:
 
  - [Criar e publicar um Site com Flask](https://youtu.be/K2ejI4z8Mbg?si=E5gTWMDEVuHfnHfJ)
+ - [Publicar no Railway ou Render](https://youtu.be/E9MMZ52InK8?si=zGTQGXnb31oOZWy2)
