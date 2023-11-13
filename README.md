@@ -13,3 +13,4 @@ Vídeos:
 
  - [Criar e publicar um Site com Flask](https://youtu.be/K2ejI4z8Mbg?si=E5gTWMDEVuHfnHfJ)
  - [Publicar no Railway ou Render](https://youtu.be/E9MMZ52InK8?si=zGTQGXnb31oOZWy2)
+ - [Cursinho de GitHub Desktop](https://www.youtube.com/watch?v=EGmzAs1G0z0)
