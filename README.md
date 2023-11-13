@@ -8,6 +8,10 @@ Diversos experimentos, principalmente com API em Python e Flesk.
  - Obter localização das dependências → `python -m site --user-site`
  - Instalar todas as dependências → `pip install -r requirements.txt`
 
+`Procfile`
+```
+web: gunicorn my_flask_app:app
+```
 
 Vídeos:
 
